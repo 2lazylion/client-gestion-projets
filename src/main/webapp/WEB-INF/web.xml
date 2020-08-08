@@ -5,16 +5,12 @@
         <servlet-class>com.bdeb.gestion_projets.servlets.GestionProjets</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>testServlet</servlet-name>
-        <servlet-class>com.bdeb.gestion_projets.servlets.testServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>listeProjets</servlet-name>
         <servlet-class>com.bdeb.gestion_projets.servlets.listeProjets</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Demandes</servlet-name>
-        <servlet-class>com.bdeb.gestion_projets.servlets.Demandes</servlet-class>
+        <servlet-name>ListeDemandes</servlet-name>
+        <servlet-class>com.bdeb.gestion_projets.servlets.ListeDemandes</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DetailProjet</servlet-name>
@@ -24,21 +20,25 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>com.bdeb.gestion_projets.servlets.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listeUtilisateurs</servlet-name>
+        <servlet-class>com.bdeb.gestion_projets.servlets.listeUtilisateurs</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnvoyerDemande</servlet-name>
+        <servlet-class>com.bdeb.gestion_projets.servlets.EnvoyerDemande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GestionProjets</servlet-name>
         <url-pattern>/GestionProjets</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>testServlet</servlet-name>
-        <url-pattern>/testServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>listeProjets</servlet-name>
         <url-pattern>/listeProjets</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Demandes</servlet-name>
-        <url-pattern>/Demandes</url-pattern>
+        <servlet-name>ListeDemandes</servlet-name>
+        <url-pattern>/ListeDemandes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DetailProjet</servlet-name>
@@ -47,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listeUtilisateurs</servlet-name>
+        <url-pattern>/listeUtilisateurs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerDemande</servlet-name>
+        <url-pattern>/EnvoyerDemande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

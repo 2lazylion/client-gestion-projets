@@ -6,9 +6,12 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- barre de navigation -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Gestion de projets</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-light" href="#">Gestion de projets</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,29 +19,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Login"> Connexion <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-light" href="Login"> Connexion <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="listeProjets"> Liste des projets </a>
+                    <a class="nav-link text-light" href="listeProjets"> Liste des projets </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="GestionProjets"> Gestions de mes projets </a>
+                    <a class="nav-link text-light" href="GestionProjets"> Gestions de mes projets </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="CreationProjet.jsp"> Creer un nouveau projet </a>
+                    <a class="nav-link text-light" href="CreationProjet.jsp"> Creer un nouveau projet </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Demandes"> Demandes de participation </a>
+                    <a class="nav-link text-light" href="ListeDemandes"> Demandes de participation </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="listeProjets"> Liste des projets </a>
                         <a class="dropdown-item" href="GestionsProjets"> Gestions de mes projets </a>
                         <a class="dropdown-item" href="CreationProjet.jsp"> Creer un nouveau projet </a>
-                        <a class="dropdown-item" href="Demandes"> Demandes de participation </a>
+                        <a class="dropdown-item" href="ListeDemandes"> Demandes de participation </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>

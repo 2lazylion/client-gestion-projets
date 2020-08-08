@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Edward Cadet
  */
-public class Demandes extends HttpServlet {
+public class ListeDemandes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +34,7 @@ public class Demandes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // adresse ou on va renvoyer la requete
         String url = "/listeDemandes.jsp";
         
         ArrayList<Demande> mesDemandes = new ArrayList<Demande>();

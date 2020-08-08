@@ -5,12 +5,17 @@
  */
 package com.bdeb.gestion_projets.servlets;
 
+import com.bdeb.gestion_projets.model.Projet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdk.nashorn.internal.objects.NativeArray;
 
 /**
  *
@@ -29,20 +34,38 @@ public class DetailProjet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DetailProjet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DetailProjet at " + request.getContextPath() + "</h1>");
-            out.println("<h2>id du projet " + request.getParameter("id") + "</h2>");
-            out.println("</body>");
-            out.println("</html>");
+        // Mock d'une liste de projet
+        ArrayList<Projet> mesProjets = new ArrayList<Projet>();
+        Projet projetMock1 = new Projet(1, "Projet1", new Date(2020,8,6));
+        Projet projetMock2 = new Projet(2, "Projet2", new Date(2020,8,6));
+        Projet projetMock3 = new Projet(3, "Projet3", new Date(2020,8,6));
+        
+        mesProjets.add(projetMock1);
+        mesProjets.add(projetMock2);
+        mesProjets.add(projetMock3);
+        
+        // le id du projet
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        // recherche le projet dans la liste de projets
+        Projet detailProjet = null;
+        
+        for(int i = 0; i < mesProjets.size(); i++) {
+            if(mesProjets.get(i).getId() == id){
+                detailProjet = mesProjets.get(i);
+                break;
+            }
         }
+        
+        // url a envoyer la liste
+        String url = "/detailProjet.jsp";
+        
+        // envoie le projet a la page web
+        request.setAttribute("detailProjet", detailProjet);
+        
+        // va a la page url
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

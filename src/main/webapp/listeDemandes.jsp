@@ -11,14 +11,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
         <title> Liste des demandes </title>
     </head>
-    <body>
+    <body class="bg-secondary">
         <!-- barre de navigation -->
         <jsp:include page="nav.jsp" />
         
         <!-- container principal -->
-        <div class="container">
+        <div class="container bg-light fill">
             <!-- titre -->
             <div class="row">
                 <div class=" col-lg-10 offset-1">
@@ -48,8 +49,8 @@
                             <td>  </td>
                             <td> <%= demande.getDateDemande() %> </td>
                             <td> <%= demande.getEtatDemande() %> </td>
-                            <td> <a href=""> Accepter </a> </td>
-                            <td> <a href=""> Refuser </a> </td>
+                            <td> <a href="EnvoyerDemande"> Accepter </a> </td>
+                            <td> <a href="EnvoyerDemande"> Refuser </a> </td>
                         </tr>
                     </tbody>
                     <%

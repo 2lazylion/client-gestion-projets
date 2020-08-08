@@ -5,23 +5,19 @@
  */
 package com.bdeb.gestion_projets.servlets;
 
-import com.bdeb.gestion_projets.model.Projet;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Edward Cadet
  */
-public class GestionProjets extends HttpServlet {
+public class EnvoyerDemande extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,28 +30,20 @@ public class GestionProjets extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // adresse ou on va renvoyer la requete
+        String url = "/demandeConfirmation.jsp";
+        String test = "testAttribute";
+        boolean serviceConfirmation = false;
         
-        // Mock d'une liste de projet
-        ArrayList<Projet> mesProjets = new ArrayList<Projet>();
-        Projet projetMock1 = new Projet(1, "Projet1", new Date(2020,8,6));
-        Projet projetMock2 = new Projet(2, "Projet2", new Date(2020,8,6));
-        Projet projetMock3 = new Projet(3, "Projet3", new Date(2020,8,6));
+        if(serviceConfirmation) {
+            request.setAttribute("msgConfirmation", "votre invitation a ete envoye");
+        } else {
+            request.setAttribute("msgConfirmation", "votre invitation n'a pas ete envoye");
+        }
         
-        mesProjets.add(projetMock1);
-        mesProjets.add(projetMock2);
-        mesProjets.add(projetMock3);
-        
-        // url a envoyer la liste
-        String url = "/gestionMesProjets.jsp";
-        
-        // envoie la liste a la page web
-        request.setAttribute("mesProjets", mesProjets);
         
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-        
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

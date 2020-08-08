@@ -12,14 +12,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
         <title> Gestion de mes projets </title>
     </head>
-    <body>
+    <body class="bg-secondary">
         <!-- barre de navigation -->
         <jsp:include page="nav.jsp" />
         
         <!-- container principal -->
-        <div class="container">
+        <div class="container bg-light fill">
             <!-- titre -->
             <div class="row">
                 <div class=" col-lg-10 offset-1">
@@ -47,12 +48,10 @@
                             <td> <%= projet.getNomProjet()%> </td>
                             <td> <%= projet.getDateCreation()%> </td>
                             <% %>
-                            <td> <a href="<c:url value="DetailProjet">        
-                                        <c:param name="id" value="${ projet.id }" />
-                                    </c:url>"> Detail </a> 
+                            <td> <a href="DetailProjet?id=<%= projet.getId()%>"> Detail </a> 
                             </td>
                             <!-- modal? -->
-                            <td><a href=""> Envoyer une invitation </a></td>
+                            <td><a href="listeUtilisateurs"> Envoyer une invitation </a></td>
                         </tr>
                     </tbody>
                     <%

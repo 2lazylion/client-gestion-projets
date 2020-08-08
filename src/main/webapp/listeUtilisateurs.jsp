@@ -1,53 +1,58 @@
 <%-- 
-    Document   : listeDesProjets
-    Created on : Aug 6, 2020, 7:39:50 PM
+    Document   : listeUtilisateurs
+    Created on : Aug 7, 2020, 8:23:20 PM
     Author     : Edward Cadet
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page session="true" import="java.util.*,com.bdeb.gestion_projets.model.Projet" %>
+<%@ page session="true" import="java.util.*,com.bdeb.gestion_projets.model.Utilisateur" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
         <link rel="stylesheet" href="css/styles.css">
-        <title> Liste des projets </title>
+        <title> Envoyer une invitation  </title>
     </head>
     <body class="bg-secondary">
         <!-- barre de navigation -->
         <jsp:include page="nav.jsp" />
         
+        <!-- Si on recoit une confirmation du servlet, fait apparaitre un popup de confirmation? -->
+        <c:if test="${ confirmation }" >
+            <script>
+                alert('Vous avez envoyé l\'invitation');
+            </script>
+        </c:if>
+            
         <!-- container principal -->
         <div class="container bg-light fill">
             <!-- titre -->
             <div class="row">
                 <div class=" col-lg-10 offset-1">
-                    <h1 class="display-4 mb-3"> Liste des projets </h1>
+                    <h1 class="display-4 mb-3"> Liste des utilisateurs </h1>
                 </div>
             </div>
             
+            
             <!-- tableau des projets -->
-            <% ArrayList<Projet> listeProjets = (ArrayList<Projet>) request.getAttribute("listeProjets"); %>
+            <% ArrayList<Utilisateur> listeUtilisateurs = (ArrayList<Utilisateur>) request.getAttribute("utilisateurs"); %>
             <div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th> Id </th>
                             <th> Nom </th>
-                            <th> Date de creation </th>
                             <th>  </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <% for(int i = 0; i < listeProjets.size(); i++) {
-                            Projet projet = (Projet) listeProjets.get(i);
+                    <tbody>                     
+                        <% for(int i = 0; i < listeUtilisateurs.size(); i++) {
+                            Utilisateur utilisateur = (Utilisateur) listeUtilisateurs.get(i);
                         %>
                         <tr>
-                            <td> <%= projet.getId() %> </td>
-                            <td> <%= projet.getNomProjet()%> </td>
-                            <td> <%= projet.getDateCreation()%> </td>
-                            <td> <a href="EnvoyerDemande"> Demander de rejoindre </a> </td>
+                            <td> <%= utilisateur.getNom()%> </td>
+                            <td> <a href="EnvoyerDemande"> Inviter </a> </td> 
                         </tr>
                     </tbody>
                     <%
