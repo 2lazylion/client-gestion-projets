@@ -22,7 +22,7 @@ public class Projet {
     private Integer id;
     private Equipe idEquipe;
     private List<Demande> demandeList;
-
+    
     public Projet() {
     }
 

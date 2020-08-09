@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="row">
     <div class=" col-lg-10 offset-2">
-        <form action="Login">
+        <form action="Login" method="post">
             <div class="form-group">
                 <label for="login"> Nom d'utilisateur </label>
                 <input type="text" class="form-control col-7" id="login" placeholder="entrer votre nom d'utilisateur">
@@ -20,4 +20,11 @@
             <button type="submit" class="btn btn-primary"> Connexion </button>
         </form>
     </div>
+</div>
+<div class="row offset-2 pt-2">
+    <br >
+    <br >
+    <br >
+    <br >
+    <a href="CreationUtilisateur.jsp"> Nouveau? Inscrivez-vous! </a>
 </div>

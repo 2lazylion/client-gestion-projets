@@ -33,7 +33,7 @@ public class EnvoyerDemande extends HttpServlet {
         // adresse ou on va renvoyer la requete
         String url = "/demandeConfirmation.jsp";
         String test = "testAttribute";
-        boolean serviceConfirmation = false;
+        boolean serviceConfirmation = true;
         
         if(serviceConfirmation) {
             request.setAttribute("msgConfirmation", "votre invitation a ete envoye");

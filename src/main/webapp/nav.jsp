@@ -3,7 +3,7 @@
     Created on : Aug 6, 2020, 7:41:29 PM
     Author     : Edward Cadet
 --%>
-
+<!-- affiche ce nav pour ceux qui sont logger -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- barre de navigation -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -18,9 +18,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <!--
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="Login"> Connexion <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-light" href="Login"> connexion <span class="sr-only">(current)</span></a>
                 </li>
+                -->
                 <li class="nav-item">
                     <a class="nav-link text-light" href="listeProjets"> Liste des projets </a>
                 </li>
@@ -32,6 +34,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="ListeDemandes"> Demandes de participation </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="ListeDemandes"> Déconnexion </a>
                 </li>
                 <li class="nav-item dropdown">
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
