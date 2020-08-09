@@ -24,7 +24,9 @@ import javax.ws.rs.core.Response;
  */
 public class CreationUtilisateur extends HttpServlet {
     
-    Client client = ClientBuilder.newClient();
+    // client pour communiquer avec le API
+    private Client client = ClientBuilder.newClient();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

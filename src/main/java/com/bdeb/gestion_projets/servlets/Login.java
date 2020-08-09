@@ -32,9 +32,8 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // pour le forwarding
-        String url = "/index.jsp";
-        
+        // declaration de variables String
+        String utilisateur, mdp, mdpCrypt, url;
         
         // objet de la session, elle va conservé le id de l'utilisateur
         HttpSession session = request.getSession();
@@ -42,22 +41,32 @@ public class Login extends HttpServlet {
         // TODO: le mettre a zero/null
         int id = 1;
         
-        // boolean pour confirmer que l'utilisateur est connecté
-        boolean isLogin = true;
+        //infos du formulaire
+        utilisateur = request.getParameter("utilisateur");
+        mdp = request.getParameter("mdp");
         
         // TODO: valider les champs du formulaire
         
-        // recherche des infos du formulaire dans l'api pour confirmer l'utilisateur 
+        // crypt le mdp
+        mdpCrypt = CryptUtils.encrypt(mdp);
+        
+        // recherche des infos du formulaire dans l'api pour confirmer l'utilisateur
+        
         
         // mets les infos dans la session
         session.setAttribute("idUtilisateur", id);
-        session.setAttribute("isLogin", isLogin);
+        //session.setAttribute("isLogin", isLogin);
         
-        // si le user se connecte, le rediriger ver la gestion de ses projets
-        if(isLogin) {
+        // url pour le redirect
+        url = "/index.jsp";
+        
+        // si le user se connecte, le forward ver la gestion de ses projets
+        if(id != 0) {
             url = "/gestionMesProjets.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         } 
-        
+        // if fasle redirect
         RequestDispatcher rd = request.getRequestDispatcher("/gestionMesProjets.jsp");
         rd.forward(request, response);
     }

@@ -36,6 +36,10 @@
         <servlet-name>CreationUtilisateur</servlet-name>
         <servlet-class>com.bdeb.gestion_projets.servlets.CreationUtilisateur</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EnvoyerReponseDemande</servlet-name>
+        <servlet-class>com.bdeb.gestion_projets.servlets.EnvoyerReponseDemande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GestionProjets</servlet-name>
         <url-pattern>/GestionProjets</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>CreationUtilisateur</servlet-name>
         <url-pattern>/CreationUtilisateur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerReponseDemande</servlet-name>
+        <url-pattern>/EnvoyerReponseDemande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

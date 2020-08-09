@@ -5,6 +5,7 @@
  */
 package com.bdeb.gestion_projets.servlets;
 
+import com.bdeb.gestion_projets.model.DetailsProjet;
 import com.bdeb.gestion_projets.model.Projet;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 import jdk.nashorn.internal.objects.NativeArray;
 
 /**
@@ -22,7 +28,10 @@ import jdk.nashorn.internal.objects.NativeArray;
  * @author Edward Cadet
  */
 public class DetailProjet extends HttpServlet {
-
+    
+    // client pour le API
+    private Client client = ClientBuilder.newClient();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,6 +43,39 @@ public class DetailProjet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //int id = (int) session.getAttribute("idUtilisateur");
+        // id du projet
+        int idProjet = Integer.parseInt(request.getParameter("id"));
+        //int idProjet = 1;
+
+        
+        // requete pour le API synchrone :(
+        String queryString = Config.BASE_URI + "details?idProjet=" + idProjet; //+ String.valueOf(id);
+        //GenericType<DetailsProjet> genericDetailsProjet = new GenericType<DetailsProjet>() {};
+        
+        try{
+            // projet a envoye
+            GenericType<DetailsProjet> genericDetails = new GenericType<DetailsProjet>() {};
+        
+            DetailsProjet detailProjet = client
+              .target(queryString)
+              .request(MediaType.APPLICATION_JSON)
+              .get(genericDetails);
+        
+            // url a envoyer la liste
+            String url = "/detailProjet.jsp";
+
+            // envoie la liste a la page web
+            request.setAttribute("detailProjet", detailProjet);
+
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+            
+        } catch (NotFoundException ex ) {
+            ex.printStackTrace();
+        }
+
+        /*
         // Mock d'une liste de projet
         ArrayList<Projet> mesProjets = new ArrayList<Projet>();
         Projet projetMock1 = new Projet(1, "Projet1", new Date(2020,8,6));
@@ -66,6 +108,7 @@ public class DetailProjet extends HttpServlet {
         // va a la page url
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

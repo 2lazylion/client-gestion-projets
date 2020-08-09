@@ -35,7 +35,6 @@
                     <thead>
                         <tr>
                             <th> Nom </th>
-                            <th> Date de creation </th>
                             <th>  </th>
                             <th>  </th>
                         </tr>
@@ -46,8 +45,6 @@
                         %>
                         <tr>
                             <td> <%= projet.getNomProjet()%> </td>
-                            <td> <%= projet.getDateCreation()%> </td>
-                            <% %>
                             <td> <a href="DetailProjet?id=<%= projet.getId()%>"> Detail </a> 
                             </td>
                             <!-- modal? -->

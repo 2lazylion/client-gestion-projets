@@ -58,12 +58,12 @@ public class GestionProjets extends HttpServlet {
         //int id = (int) session.getAttribute("idUtilisateur");
         
         // requete pour le API synchrone :(
-        String queryString = "projets?idUtilisateur=1"; //+ String.valueOf(id);
+        String queryString = Config.BASE_URI + "projets?idUtilisateur=1"; //+ String.valueOf(id);
         GenericType<ArrayList<Projet>> genericMesProjets = new GenericType<ArrayList<Projet>>() {};
         
         try{
             ArrayList<Projet> mesProjetsApi = client
-              .target(Config.BASE_URI+queryString)
+              .target(queryString)
               .request(MediaType.APPLICATION_JSON)
               .get(genericMesProjets);
         

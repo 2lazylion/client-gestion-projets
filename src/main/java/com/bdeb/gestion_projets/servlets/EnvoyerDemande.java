@@ -12,13 +12,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 
 /**
  *
  * @author Edward Cadet
  */
 public class EnvoyerDemande extends HttpServlet {
-
+    
+    // client pour communiquer avec le API
+    private Client client = ClientBuilder.newClient();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

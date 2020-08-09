@@ -45,13 +45,21 @@
                         <% for(int i = 0; i < listeDemandes.size(); i++) {
                             Demande demande = (Demande) listeDemandes.get(i);
                         %>
+                        <!-- TODO: afficher seulement les demandes en cours -->
+                        <c:if test="<%= demande.getEtatDemande().equals("EN_COURS") %>">
                         <tr>
                             <td>  </td>
                             <td> <%= demande.getDateDemande() %> </td>
                             <td> <%= demande.getEtatDemande() %> </td>
-                            <td> <a href="EnvoyerDemande"> Accepter </a> </td>
-                            <td> <a href="EnvoyerDemande"> Refuser </a> </td>
+                            
+                            <%  String idUtilisateur = String.valueOf(demande.getDemandePK().getIdUtilisateur());
+                                String idProjet = String.valueOf(demande.getDemandePK().getIdUtilisateur()); 
+                                String destinataire = demande.getDemandePK().getDestinataire();
+                                String queryParam ="&idUtilisateur=" + idUtilisateur + "&idProjet=" + idProjet + "&destinataire=" + destinataire; %>
+                                <td> <a href="EnvoyerReponseDemande?reponseDemande=accepter<%= queryParam %>"> Accepter </a> </td>
+                            <td> <a href="EnvoyerReponseDemande?reponseDemande=refuser<%= queryParam %>"> Refuser </a> </td>
                         </tr>
+                        </c:if>
                     </tbody>
                     <%
                         }

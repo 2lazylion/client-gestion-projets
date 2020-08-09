@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -27,7 +25,9 @@ import javax.ws.rs.core.Response;
  */
 public class CreationProjet extends HttpServlet {
     
-    Client client = ClientBuilder.newClient();
+    // client pour communiquer avec le API
+    private Client client = ClientBuilder.newClient();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,14 +47,14 @@ public class CreationProjet extends HttpServlet {
         // lien pour a requete api
         String queryString = Config.BASE_URI + "projets?idUtilisateur=" + idUtilisateur;
         
-        // info pour le nouveaau projet
+        // info pour le nouveau projet
         String nomProjet = request.getParameter("nomProjet");
         
         // creation du nouveau projet
         Projet nouveauProjet = new Projet();
         nouveauProjet.setNomProjet(nomProjet);
         
-        // post au API
+        // post au API TODO: rajoute response.getStatus pour verfier si il est cree
         Response responseApi = client.target(queryString)
                 .request()
                 .post(Entity.json(nouveauProjet));

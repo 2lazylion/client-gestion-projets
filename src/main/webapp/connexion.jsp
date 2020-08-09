@@ -9,13 +9,13 @@
     <div class=" col-lg-10 offset-2">
         <form action="Login" method="post">
             <div class="form-group">
-                <label for="login"> Nom d'utilisateur </label>
-                <input type="text" class="form-control col-7" id="login" placeholder="entrer votre nom d'utilisateur">
+                <label for="utilisateur"> Nom d'utilisateur </label>
+                <input type="text" class="form-control col-7" id="utilisateur" name="utilisateur" placeholder="entrer votre nom d'utilisateur">
                 <!--  div class="valid-feedback" -->
             </div>
             <div class="form-group">
                 <label for="mdp"> Mot de passe </label>
-                <input type="password" class="form-control col-7" id="mdp" placeholder="Mot de passe">
+                <input type="password" class="form-control col-7" id="mdp" name="mdp" placeholder="Mot de passe">
             </div>
             <button type="submit" class="btn btn-primary"> Connexion </button>
         </form>
