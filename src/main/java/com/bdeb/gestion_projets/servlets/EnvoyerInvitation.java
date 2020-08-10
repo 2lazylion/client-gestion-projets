@@ -7,10 +7,8 @@ package com.bdeb.gestion_projets.servlets;
 
 import com.bdeb.gestion_projets.model.Demande;
 import com.bdeb.gestion_projets.model.DemandePK;
-import com.bdeb.gestion_projets.model.Projet;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,9 +23,8 @@ import javax.ws.rs.core.Response;
  *
  * @author Edward Cadet
  */
-public class EnvoyerDemande extends HttpServlet {
-    
-    // client pour communiquer avec le API
+public class EnvoyerInvitation extends HttpServlet {
+    //client pour communiquer avec le API
     private Client client = ClientBuilder.newClient();
     
     /**
@@ -48,9 +45,9 @@ public class EnvoyerDemande extends HttpServlet {
         // Prendre le idProjet de listeDesProjets.jsp
         idProjet = Integer.parseInt(request.getParameter("idProjet"));
         
-        // TODO: prendre les infos de l'utilisateur dans la session
+        // TODO: prendre les infos de l'utilisateur dpour le destinataire
         idUtilisateur = Integer.parseInt(request.getParameter("idUtilisateur"));
-        destinataire = "edward.cadet@gmail.com";
+        destinataire = request.getParameter("destinataire");
         
         // lien pour a requete api
         String queryString = Config.BASE_URI + "demandes" ;

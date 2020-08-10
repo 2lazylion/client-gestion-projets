@@ -40,6 +40,7 @@
                         <th>Email</th>
                         <th>Nom</th>
                         <th> Role</th>
+                        <th> </th>
                     </tr>
                     </thead>
                 <c:forEach var="membre" items="${detailProjet.membres}" >
@@ -47,6 +48,7 @@
                         <td><c:out value="${membre.email}"/></td>
                         <td><c:out value="${membre.nom}"/></td>
                         <td><c:out value="${membre.role}"/></td>
+                        <td><a href=""> Supprimer </a></td>
                 </tr>
                 </c:forEach>
                     </table>

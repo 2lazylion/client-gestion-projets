@@ -34,7 +34,6 @@
                     <thead>
                         <tr>
                             <th> Nom </th>
-                            <th> Date de creation </th>
                             <th>  </th>
                         </tr>
                     </thead>
@@ -44,7 +43,6 @@
                         %>
                         <tr>
                             <td> <%= projet.getNomProjet()%> </td>
-                            <td> <%= projet.getDateCreation()%> </td>
                             <td> <a href="EnvoyerDemande?idProjet=<%= projet.getId() %>"> Demander de rejoindre </a> </td>
                         </tr>
                     </tbody>

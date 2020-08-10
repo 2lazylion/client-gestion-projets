@@ -52,7 +52,7 @@
                         %>
                         <tr>
                             <td> <%= utilisateur.getNom()%> </td>
-                            <td> <a href="EnvoyerDemande"> Inviter </a> </td> 
+                            <td> <a href="EnvoyerInvitation?idProjet=<%= request.getParameter("idProjet") %>&idUtilisateur=<%= utilisateur.getId()%>&destinataire=<%= utilisateur.getEmail()%>"> Inviter </a> </td> 
                         </tr>
                     </tbody>
                     <%

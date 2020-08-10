@@ -40,6 +40,10 @@
         <servlet-name>EnvoyerReponseDemande</servlet-name>
         <servlet-class>com.bdeb.gestion_projets.servlets.EnvoyerReponseDemande</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EnvoyerInvitation</servlet-name>
+        <servlet-class>com.bdeb.gestion_projets.servlets.EnvoyerInvitation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GestionProjets</servlet-name>
         <url-pattern>/GestionProjets</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>EnvoyerReponseDemande</servlet-name>
         <url-pattern>/EnvoyerReponseDemande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnvoyerInvitation</servlet-name>
+        <url-pattern>/EnvoyerInvitation</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

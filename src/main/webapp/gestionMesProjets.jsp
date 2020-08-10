@@ -47,8 +47,7 @@
                             <td> <%= projet.getNomProjet()%> </td>
                             <td> <a href="DetailProjet?id=<%= projet.getId()%>"> Detail </a> 
                             </td>
-                            <!-- modal? -->
-                            <td><a href="listeUtilisateurs"> Envoyer une invitation </a></td>
+                            <td><a href="listeUtilisateurs?idProjet=<%= projet.getId()%>"> Envoyer une invitation </a></td>
                         </tr>
                     </tbody>
                     <%
