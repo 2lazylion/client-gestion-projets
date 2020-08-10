@@ -5,8 +5,12 @@
  */
 package com.bdeb.gestion_projets.servlets;
 
+import com.bdeb.gestion_projets.model.Demande;
+import com.bdeb.gestion_projets.model.DemandePK;
+import com.bdeb.gestion_projets.model.Projet;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -35,17 +41,42 @@ public class EnvoyerDemande extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // declaration des variables
+        String url, destinataire;
+        int idProjet, idUtilisateur;
+        
+        // Prendre le idProjet de listeDesProjets.jsp
+        idProjet = Integer.parseInt(request.getParameter("idProjet"));
+        
+        // TODO: prendre les infos de l'utilisateur dans la session
+        idUtilisateur = 1;
+        destinataire = "boukhoulda.lokman@gmail.com";
+        
+        // lien pour a requete api
+        String queryString = Config.BASE_URI + "demandes" ;
+        
+        // info pour le nouveau projet
+        String nomProjet = request.getParameter("nomProjet");
+        
+        // creer la cle de la demande
+        DemandePK dpk = new DemandePK(idUtilisateur, idProjet, destinataire);
+        
+        //creer la nouvelle demande
+        Demande nouvelleDemande = new Demande(dpk);
+        
+        // post au API TODO: rajoute response.getStatus pour verfier si il est cree
+        Response responseApi = client.target(queryString)
+                .request()
+                .post(Entity.json(nouvelleDemande));
+        
+        // ferme l'objet responseApi
+        responseApi.close();
+        
         // adresse ou on va renvoyer la requete
-        String url = "/demandeConfirmation.jsp";
-        String test = "testAttribute";
-        boolean serviceConfirmation = true;
+        url = "/demandeConfirmation.jsp";
         
-        if(serviceConfirmation) {
-            request.setAttribute("msgConfirmation", "votre invitation a ete envoye");
-        } else {
-            request.setAttribute("msgConfirmation", "votre invitation n'a pas ete envoye");
-        }
-        
+        // TODO: response.getStatus == 204? a ete envoye : n'a pas ete envoye
+        request.setAttribute("msgConfirmation", "votre invitation a ete envoye");
         
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);

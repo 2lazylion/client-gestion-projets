@@ -66,19 +66,21 @@ public class EnvoyerReponseDemande extends HttpServlet {
         reponseDemande = request.getParameter("reponseDemande");
         
         // requete pour le API pour aller chercher la liste des demandes
-        queryString = Config.BASE_URI + "demandes?idUtilisateur=" + idUtilisateur; //+ String.valueOf(id);
-        GenericType<ArrayList<Demande>> genericDemande = new GenericType<ArrayList<Demande>>() {};
+        queryString = Config.BASE_URI + "demandes/demandePK;idUtilisateur=" + String.valueOf(idUtilisateur) 
+                                        + ";idProjet=" + String.valueOf(idProjet) 
+                                        + ";destinataire=" + destinataire;
         
         try{
             // si la demande a été accepté
             if(reponseDemande.equals("accepter")) {
                 // creer la demande avec l'état accepté
-                Demande demandeAccepte = new Demande(dpk, new Date(), "ACCEPTEE");
+                // Demande demandeAccepte = new Demande(dpk, new Date(), "ACCEPTEE");
+                Demande demandeAccepte = new Demande(dpk);
 
                 // post au API TODO: rajoute response.getStatus pour verfier si il est cree
-                responseApi = client.target(queryString)
+                responseApi = client.target(queryString + "/accept")
                         .request()
-                        .post(Entity.json(demandeAccepte));
+                        .put(Entity.json(demandeAccepte));
 
                 // ferme l'objet responseApi
                 responseApi.close();
@@ -87,12 +89,13 @@ public class EnvoyerReponseDemande extends HttpServlet {
                 request.setAttribute("msgConfirmation", "vous avez " + reponseDemande + " de rejoindre le projet");
             } else {
                 // creer la demande avec l'état accepté
-                Demande demandeRefuse = new Demande(dpk, new Date(), "ANNULE");
+                // Demande demandeRefuse = new Demande(dpk, new Date(), "ANNULE");
+                Demande demandeRefuse = new Demande(dpk);
 
                 // post au API TODO: rajoute response.getStatus pour verfier si il est cree
-                responseApi = client.target(queryString)
+                responseApi = client.target(queryString + "/cancel")
                         .request()
-                        .post(Entity.json(demandeRefuse));
+                        .put(Entity.json(demandeRefuse));
 
                 // ferme l'objet responseApi
                 responseApi.close();

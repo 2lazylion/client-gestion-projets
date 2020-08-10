@@ -16,6 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -23,6 +28,9 @@ import javax.servlet.http.HttpSession;
  */
 public class listeProjets extends HttpServlet {
 
+    // client pour communiquer avec le API
+    private Client client = ClientBuilder.newClient();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,6 +45,30 @@ public class listeProjets extends HttpServlet {
         // session de la requete
         HttpSession session = request.getSession();
         
+        // requete pour le API synchrone :(
+        String queryString = Config.BASE_URI + "projets/tout"; //+ String.valueOf(id);
+        GenericType<ArrayList<Projet>> genericMesProjets = new GenericType<ArrayList<Projet>>() {};
+        
+        try{
+            ArrayList<Projet> listeProjets = client
+              .target(queryString)
+              .request(MediaType.APPLICATION_JSON)
+              .get(genericMesProjets);
+        
+             // url a envoyer la liste
+        String url = "/listeDesProjets.jsp";
+        
+        // envoie la liste a la page web
+        request.setAttribute("listeProjets", listeProjets);
+        
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
+            
+        } catch (NotFoundException ex ) {
+            ex.printStackTrace();
+        }
+        
+        /*
         // Mock d'une liste de projet
         ArrayList<Projet> listeProjets = new ArrayList<Projet>();
         Projet projetMock1 = new Projet(1, "Projet1", new Date(2020,8,6));
@@ -59,6 +91,7 @@ public class listeProjets extends HttpServlet {
         
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

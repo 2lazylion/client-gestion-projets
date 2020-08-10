@@ -56,9 +56,10 @@ public class GestionProjets extends HttpServlet {
         
         HttpSession session = request.getSession();
         //int id = (int) session.getAttribute("idUtilisateur");
+        String id = "1"; 
         
         // requete pour le API synchrone :(
-        String queryString = Config.BASE_URI + "projets?idUtilisateur=1"; //+ String.valueOf(id);
+        String queryString = Config.BASE_URI + "projets?idUtilisateur=" + id;
         GenericType<ArrayList<Projet>> genericMesProjets = new GenericType<ArrayList<Projet>>() {};
         
         try{

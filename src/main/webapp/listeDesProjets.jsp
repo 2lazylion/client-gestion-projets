@@ -33,7 +33,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th> Id </th>
                             <th> Nom </th>
                             <th> Date de creation </th>
                             <th>  </th>
@@ -44,10 +43,9 @@
                             Projet projet = (Projet) listeProjets.get(i);
                         %>
                         <tr>
-                            <td> <%= projet.getId() %> </td>
                             <td> <%= projet.getNomProjet()%> </td>
                             <td> <%= projet.getDateCreation()%> </td>
-                            <td> <a href="EnvoyerDemande"> Demander de rejoindre </a> </td>
+                            <td> <a href="EnvoyerDemande?idProjet=<%= projet.getId() %>"> Demander de rejoindre </a> </td>
                         </tr>
                     </tbody>
                     <%

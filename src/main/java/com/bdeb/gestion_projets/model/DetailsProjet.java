@@ -10,7 +10,10 @@ public class DetailsProjet {
     private String nomProjet;
     private List<Membre> membres;
 
-
+    public DetailsProjet(){
+        
+    }
+    
     public String getNomProjet() {
         return nomProjet;
     }
@@ -53,7 +56,11 @@ public class DetailsProjet {
         String nom;
         String email;
         String role;
-
+        
+        public Membre() {
+            
+        }
+        
         public Membre(String nom, String email, String role) {
             this.nom = nom;
             this.role = role;
