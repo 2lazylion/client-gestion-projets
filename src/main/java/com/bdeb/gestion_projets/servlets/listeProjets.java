@@ -84,7 +84,7 @@ public class listeProjets extends HttpServlet {
         listeProjets.add(projetMock5);
         
         // url a envoyer la liste
-        String url = "/listeDesProjets.jsp";
+        String url = "listeDesProjets.jsp";
         
         // envoie la liste a la page web
         request.setAttribute("listeProjets", listeProjets);

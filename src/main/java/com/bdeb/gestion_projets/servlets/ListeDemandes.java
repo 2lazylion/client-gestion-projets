@@ -65,7 +65,7 @@ public class ListeDemandes extends HttpServlet {
             */
             
             // url a envoyer la liste
-            String url = "/listeDemandes.jsp";
+            String url = "listeDemandes.jsp";
 
             // envoie la liste a la page web
             request.setAttribute("mesDemandes", mesDemandes);

@@ -69,7 +69,7 @@ public class GestionProjets extends HttpServlet {
               .get(genericMesProjets);
         
             // url a envoyer la liste
-            String url = "/gestionMesProjets.jsp";
+            String url = "gestionMesProjets.jsp";
 
             // envoie la liste a la page web
             request.setAttribute("mesProjets", mesProjetsApi);

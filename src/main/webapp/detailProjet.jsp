@@ -4,6 +4,9 @@
     Author     : Edward Cadet
 --%>
 
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +20,7 @@
     <body class="bg-secondary">
         <!-- barre de navigation -->
         <jsp:include page="nav.jsp" />     
-        
+
         <!-- container principal -->
         <div class="container bg-light fill">
             <!-- titre -->
@@ -26,9 +29,35 @@
                     <h1 class="display-4 mb-3"> detail du projet ${ detailProjet.nomProjet } </h1>
                 </div>
             </div>
-            
-             
-            
+                <div>
+                    <h2>Date de création : <fmt:formatDate pattern = "yyyy-MM-dd" value="${detailProjet.dateCreation}"/></h2>
+                </div>
+            <div>
+                <h2>Les membres</h2>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Nom</th>
+                        <th> Role</th>
+                    </tr>
+                    </thead>
+                <c:forEach var="membre" items="${detailProjet.membres}" >
+                    <tr>
+                        <td><c:out value="${membre.email}"/></td>
+                        <td><c:out value="${membre.nom}"/></td>
+                        <td><c:out value="${membre.role}"/></td>
+                </tr>
+                </c:forEach>
+                    </table>
+            </div>
+            <div>
+                <a href="GestionProjets">Retour vers liste projets</a>
+            </div>
+
+
+
+
         </div>
     </body>
 </html>

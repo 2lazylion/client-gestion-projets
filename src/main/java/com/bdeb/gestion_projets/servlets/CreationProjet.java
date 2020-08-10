@@ -63,7 +63,7 @@ public class CreationProjet extends HttpServlet {
         responseApi.close();
         
         // url a envoyer la liste
-        String url = "/index.jsp";
+        String url = "index.jsp";
         
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
