@@ -39,7 +39,7 @@ public class listeUtilisateurs extends HttpServlet {
         
         
          // url a envoyer la liste
-        String url = "/listeUtilisateurs.jsp";
+        String url = "listeUtilisateurs.jsp";
         
         // envoie la liste a la page web
         request.setAttribute("utilisateurs", listeUtilisateurs);

@@ -1,6 +1,7 @@
 package com.bdeb.gestion_projets.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,8 +10,14 @@ public class DetailsProjet {
 
     private String nomProjet;
     private List<Membre> membres;
+    private Date dateCreation;
+
+    public DetailsProjet() {
+    }
 
 
+    
+    
     public String getNomProjet() {
         return nomProjet;
     }
@@ -27,33 +34,47 @@ public class DetailsProjet {
         this.membres = membres;
     }
 
+        public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+    
+    
     @Override
+    public String toString() {
+        return "DetailsProjet{" + "nomProjet=" + nomProjet + ", dateCreation=" + dateCreation + ", membres=" + membres + '}';
+    }
+
+    
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DetailsProjet that = (DetailsProjet) o;
         return Objects.equals(nomProjet, that.nomProjet) &&
+                Objects.equals(dateCreation, that.dateCreation) &&
                 Objects.equals(membres, that.membres);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nomProjet, membres);
+        return Objects.hash(nomProjet, dateCreation, membres);
     }
-
-    @Override
-    public String toString() {
-        return "DetailsProjet{" +
-                "nomProjet='" + nomProjet + '\'' +
-                ", utilisateurs=" + membres +
-                '}';
-    }
-
+    
     public static class Membre {
         String nom;
         String email;
         String role;
 
+        public Membre() {
+        }
+
+
+        
+        
         public Membre(String nom, String email, String role) {
             this.nom = nom;
             this.role = role;
@@ -84,6 +105,7 @@ public class DetailsProjet {
             this.email = email;
         }
 
+        
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;

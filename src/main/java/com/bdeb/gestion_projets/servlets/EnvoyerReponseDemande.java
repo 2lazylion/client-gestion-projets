@@ -61,7 +61,7 @@ public class EnvoyerReponseDemande extends HttpServlet {
        
         
         // adresse ou on va renvoyer la requete
-        url = "/demandeConfirmation.jsp";
+        url = "demandeConfirmation.jsp";
         test = "testAttribute";
         reponseDemande = request.getParameter("reponseDemande");
         

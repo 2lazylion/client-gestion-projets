@@ -21,7 +21,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import jdk.nashorn.internal.objects.NativeArray;
 
 /**
  *
@@ -55,15 +54,14 @@ public class DetailProjet extends HttpServlet {
         
         try{
             // projet a envoye
-            GenericType<DetailsProjet> genericDetails = new GenericType<DetailsProjet>() {};
         
             DetailsProjet detailProjet = client
               .target(queryString)
               .request(MediaType.APPLICATION_JSON)
-              .get(genericDetails);
+              .get(DetailsProjet.class);
         
             // url a envoyer la liste
-            String url = "/detailProjet.jsp";
+            String url = "detailProjet.jsp";
 
             // envoie la liste a la page web
             request.setAttribute("detailProjet", detailProjet);

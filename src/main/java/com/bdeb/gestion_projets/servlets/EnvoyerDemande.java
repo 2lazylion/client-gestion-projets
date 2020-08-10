@@ -36,7 +36,7 @@ public class EnvoyerDemande extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // adresse ou on va renvoyer la requete
-        String url = "/demandeConfirmation.jsp";
+        String url = "demandeConfirmation.jsp";
         String test = "testAttribute";
         boolean serviceConfirmation = true;
         

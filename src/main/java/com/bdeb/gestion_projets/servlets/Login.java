@@ -58,16 +58,16 @@ public class Login extends HttpServlet {
         //session.setAttribute("isLogin", isLogin);
         
         // url pour le redirect
-        url = "/index.jsp";
+        url = "index.jsp";
         
         // si le user se connecte, le forward ver la gestion de ses projets
         if(id != 0) {
-            url = "/gestionMesProjets.jsp";
+            url = "gestionMesProjets.jsp";
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         } 
         // if fasle redirect
-        RequestDispatcher rd = request.getRequestDispatcher("/gestionMesProjets.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("gestionMesProjets.jsp");
         rd.forward(request, response);
     }
 
